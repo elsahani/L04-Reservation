@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     DatePicker dp;
     TimePicker tp;
     CheckBox cb;
-    TextView tvname, tvnumber, tvsize, tvdate, tvtime, tvsa;
+    TextView tvname, tvnumber, tvsize, tvdate, tvtime, tvs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         tvsize = findViewById(R.id.textViewOutcomeSize);
         tvdate = findViewById(R.id.textViewOutcomeDate);
         tvtime = findViewById(R.id.textViewOutcomeTime);
-        tvsa = findViewById(R.id.textViewOutcomeSelection);
+        tvs = findViewById(R.id.textViewOutcomeSelection);
         btnReset = findViewById(R.id.buttonReset);
         btnConfirm = findViewById(R.id.buttonConfirm);
         etname = findViewById(R.id.editTextPersonName);
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 tvnumber.setText("");
                 tvdate.setText("");
                 tvsize.setText("");
-                tvsa.setText("");
+                tvs.setText("");
                 tvtime.setText("");
                 Toast.makeText(MainActivity.this,"Reset Clicked", Toast.LENGTH_LONG).show();
             }
@@ -77,27 +77,27 @@ public class MainActivity extends AppCompatActivity {
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String userinputname = etname.getText().toString();
-                int iuserinputname = Integer.parseInt(userinputname);
-                if(iuserinputname < 1){
+            public void onClick(View view) {
+                String username = etname.getText().toString();
+                int iusername = Integer.parseInt(username);
+                if(iusername < 1){
                     Toast.makeText(MainActivity.this," Cannot have blank", Toast.LENGTH_LONG).show();
                     tvnumber.setText("");
                     tvsize.setText("");
                 }else{
-                    tvname.setText("Name: " + iuserinputname);
+                    tvname.setText("Name: " + iusername);
                 }
 
-                String userinputsize = etgroup.getText().toString();
-                tvsize.setText("Group Size: " + userinputsize);
+                String usersize = etgroup.getText().toString();
+                tvsize.setText("Group Size: " + usersize);
 
-                String userinputnumber = etnumber.getText().toString();
-                tvnumber.setText("Mobile Number: " + userinputnumber);
+                String usernumber = etnumber.getText().toString();
+                tvnumber.setText("Mobile Number: " + usernumber);
 
                 if(cb.isChecked()){
-                    tvsa.setText("Selected Smoking Area. ");
+                    tvs.setText("Selected Smoking Area. ");
                 }else{
-                    tvsa.setText("Selected Non-Smoking Area.");
+                    tvs.setText("Selected Non-Smoking Area.");
                 }
 
                 int day = dp.getDayOfMonth();
@@ -108,8 +108,6 @@ public class MainActivity extends AppCompatActivity {
                 String time = "Time  reserve is " + tp.getCurrentHour() + ":" + tp.getCurrentMinute();
                 tvtime.setText(time);
                 Toast.makeText(MainActivity.this,"Submit Clicked", Toast.LENGTH_LONG).show();
-
-
             }
         });
 
